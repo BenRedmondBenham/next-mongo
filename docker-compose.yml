@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+  mongodb_ui:
+    image: mongo-express:latest
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    ports:
+      - 8081:8081
+
+
+  next-app:
+    image: next-app
+    container_name: next-app
+    build:
+        context: .
+        dockerfile: Dockerfile
+    environment:
+        - DB_HOST=mongodb
+        - NEXTAUTH_URL=http://localhost:3000
+    ports:
+    - "3000:3000"
+    depends_on:
+        - mongodb
+
+volumes:
+  mongodb_data_container:
