@@ -72,6 +72,9 @@ export default function Profile({ session, profile }: ProfileProps) {
                 error={errors?.phoneNumber !== undefined}
                 helperText={errors?.phoneNumber?.message}
                 inputRef={register({ required: true })}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </FormControl>
             <br />
@@ -87,6 +90,9 @@ export default function Profile({ session, profile }: ProfileProps) {
                 error={errors?.dob !== undefined}
                 helperText={errors?.dob?.message}
                 inputRef={register({ required: true })}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </FormControl>
             <br />
@@ -102,6 +108,9 @@ export default function Profile({ session, profile }: ProfileProps) {
                 error={errors?.address !== undefined}
                 helperText={errors?.address?.message}
                 inputRef={register({ required: true })}
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </FormControl>
             <br />
